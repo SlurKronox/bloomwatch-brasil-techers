@@ -24,7 +24,7 @@ Este projeto foi desenvolvido pela seguinte equipe:
 
 - **Murilo** - Desenvolvimento e Arquitetura
 - **Rafael** - Desenvolvimento e Integração
-- **Savio** - Desenvolvimento e Design
+- **Savio** - Desenvolvimento, Design, Integração e Arquitetura
 - **Gabriela** - Design
 - **Leticia** - Programadora
 
