@@ -1,16 +1,24 @@
-# CI
+ï»¿# CI
 
-## Workflow
-Arquivo: `.github/workflows/ci.yml`
+## Workflows
+- `.github/workflows/ci.yml`
+- `.github/workflows/security.yml`
 
-Jobs:
-- `lint` (inclui typecheck)
+## CI Jobs
+- `lint` (inclui `typecheck`)
 - `test`
 - `build`
 
+## Security Jobs
+- `dependency-review` (PR)
+- `codeql` (push, PR, schedule)
+
 ## Ambiente
 - Node 20
-- Instalação via `npm ci`
+- Instalacao via `npm ci`
+
+## Criterio de aprovacao
+Merge em `main` somente com CI e Security verdes.
 
 ## English Summary
-CI validates lint/type safety, test suite, and production build on Node 20.
+CI validates lint, type safety, tests, and build; Security adds dependency review and CodeQL scanning.
