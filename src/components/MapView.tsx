@@ -34,9 +34,11 @@ export default function MapView({ regions, onRegionClick, selectedRegionId }: Ma
       }).addTo(mapRef.current);
     }
 
+    const markers = markersRef.current;
+
     // Clear existing markers
-    markersRef.current.forEach(marker => marker.remove());
-    markersRef.current.clear();
+    markers.forEach(marker => marker.remove());
+    markers.clear();
 
     // Add markers for each region
     regions.forEach(region => {
@@ -251,9 +253,9 @@ export default function MapView({ regions, onRegionClick, selectedRegionId }: Ma
       });
 
       // Hover effects
-      marker.on('mouseover', function() {
+      marker.on('mouseover', () => {
         if (!isSelected) {
-          this.setStyle({
+          marker.setStyle({
             fillOpacity: 1,
             radius: 16,
             weight: 3
@@ -261,9 +263,9 @@ export default function MapView({ regions, onRegionClick, selectedRegionId }: Ma
         }
       });
 
-      marker.on('mouseout', function() {
+      marker.on('mouseout', () => {
         if (!isSelected) {
-          this.setStyle({
+          marker.setStyle({
             fillOpacity: 0.85,
             radius: 14,
             weight: 2
@@ -271,7 +273,7 @@ export default function MapView({ regions, onRegionClick, selectedRegionId }: Ma
         }
       });
 
-      markersRef.current.set(region.id, marker);
+      markers.set(region.id, marker);
     });
 
     // Setup window callback
@@ -280,8 +282,8 @@ export default function MapView({ regions, onRegionClick, selectedRegionId }: Ma
     };
 
     return () => {
-      markersRef.current.forEach(marker => marker.remove());
-      markersRef.current.clear();
+      markers.forEach(marker => marker.remove());
+      markers.clear();
       delete (window as any).selectRegionV2;
     };
   }, [regions, onRegionClick, selectedRegionId]);

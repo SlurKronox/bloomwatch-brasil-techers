@@ -19,10 +19,18 @@ export interface Plant {
   family?: string;
   bloom_start?: number;
   bloom_end?: number;
-  optimal_conditions?: Record<string, any>;
+  optimal_conditions?: Record<string, unknown>;
   conservation_status?: string;
   image_url?: string;
   regiao_id?: string;
+  polinizadores?: string[];
+  usos?: string[];
+  epoca_frutificacao?: string;
+  importancia_ecologica?: string;
+  uso_medicinal?: string;
+  receitas?: string;
+  curiosidade?: string;
+  lenda?: string;
   created_at?: string;
 }
 

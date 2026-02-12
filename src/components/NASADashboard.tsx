@@ -1,4 +1,4 @@
-import { Satellite, Calendar, Download } from 'lucide-react';
+import { Satellite, Download } from 'lucide-react';
 
 export default function NASADashboard() {
   const nasaImages = [

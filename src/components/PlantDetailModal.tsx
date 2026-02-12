@@ -1,4 +1,4 @@
-import { X, MapPin, Calendar, Shield, Droplets, Thermometer, Info, Leaf, Users, Heart, BookOpen, Sparkles } from 'lucide-react';
+import { X, MapPin, Calendar, Shield, Thermometer, Info, Leaf, Users, Heart, BookOpen, Sparkles } from 'lucide-react';
 import type { Plant, Region } from '../types';
 
 interface PlantDetailModalProps {
@@ -8,6 +8,13 @@ interface PlantDetailModalProps {
 }
 
 export default function PlantDetailModal({ plant, region, onClose }: PlantDetailModalProps) {
+  type OptimalConditions = {
+    temperature?: [number, number];
+    rainfall?: [number, number];
+    humidity?: [number, number];
+    soil?: string;
+  };
+
   const getMonthName = (month: number): string => {
     const months = [
       'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
@@ -28,7 +35,7 @@ export default function PlantDetailModal({ plant, region, onClose }: PlantDetail
   };
 
   const statusInfo = getStatusBadge(plant.conservation_status || 'LC');
-  const optimalConditions = plant.optimal_conditions as any;
+  const optimalConditions = plant.optimal_conditions as OptimalConditions | undefined;
 
   // Safely parse arrays
   const polinizadores = Array.isArray(plant.polinizadores) ? plant.polinizadores : [];
@@ -208,7 +215,7 @@ export default function PlantDetailModal({ plant, region, onClose }: PlantDetail
                     Polinizadores
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {polinizadores.map((pol, idx) => (
+                    {polinizadores.map((pol: string, idx: number) => (
                       <span
                         key={idx}
                         className="bg-yellow-100 border border-yellow-300 text-yellow-900 px-3 py-1.5 rounded-full text-sm font-medium"
@@ -228,7 +235,7 @@ export default function PlantDetailModal({ plant, region, onClose }: PlantDetail
                     Usos e Aplicações
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {usos.map((uso, idx) => (
+                    {usos.map((uso: string, idx: number) => (
                       <span
                         key={idx}
                         className="bg-green-100 border border-green-300 text-green-900 px-3 py-1.5 rounded-full text-sm font-medium"
