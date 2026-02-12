@@ -13,9 +13,9 @@ O foco e fornecer previsao de florada, visualizacao geografica e suporte a decis
 
 ## Stack
 - React 18 + TypeScript
-- Vite 5
+- Vite 7
 - Supabase
-- Vitest
+- Vitest 4
 - GitHub Actions
 
 ## Arquitetura
